@@ -72,8 +72,6 @@ Factor de compresión: 0.25x
 ![alt text](./reporte_imagenes/tp1-3.png)
 
 ---
-Los resultados anteriores a los experimentos relacionados con la compresión utilizando RLE.
-
 Los resultados obtenidos fureon los siguientes
 
 - Todas las imágenes de entrada tenían una profundidad de bits de 8 y diferentes formatos.
