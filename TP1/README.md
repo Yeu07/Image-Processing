@@ -13,6 +13,104 @@ El objetivo es aplicar técnicas de procesamiento de imágenes para familiarizar
 Este documento contiene una breve descripción de los ejercicios realizados y respuestas a las preguntas teóricas planteadas en el trabajo práctico. Para ver el desarrollo completo, dirigirse al notebook con el código fuente (`TP1.ipynb`) o al PDF generado a partir del mismo (`TP1.pdf`).
 
 ### Parte 1: Modos de color en imágenes
+#### 1. Utilizando openCV en python, cargar una imagen RGB y mostrarla en una ventana utilizando el comando imread() y imshow(), tambien puede utilizar matplotlib para mstrarla.
+
+##### Imágen cargada con **imread()** y visualización con **imshow()**
+
+![imread()](./reporte_imagenes/tp1-4.jpeg)
+
+##### Imágen cargada con **imread()** y visualización con **matplotlib**
+
+![matplotlib](./reporte_imagenes/tp1-5.jpeg)
+
+#### 2. Una vez cargada la imagen de muestra podemos empezar usando numpy y su función array para obtener el arreglo de valores de intensidad para cada uno de los canales de color.
+La array resultante tiene un shape (225, 225, 3) en el cual podemos ver que el tercer valor a cada canal de color.
+
+#### 3. Retomando con el ejercicio 1, analizar la imagen cargada ¿Existe algún problema con los colores mostrados con respecto a la imagen original?
+
+Los colores de usar imshow() y matplotlib son diferentes ya que al cargar la imágen con imread() los colores se guardan en formáto BGR:
+
+- **imshow()** está diseñado para trabajar y mostrar la imágen usando formato BGR ya que tanto imread() como imshow() pertenecen a la mimsa libreria.
+- **matplotlib** trabaja con formato RGB por lo tanto los colores rojo y azul están invertidos
+
+#### 4. Cargar la imagen pero antes de mostrarla utilizar el comando cvtColor(). ¿Qué sucede ahora?
+
+Al utilizar la función cvtColor() y pasar de formáto BGR a formáto RGB los colores de la imágen utilizando matplotlib se visualizan correctamente.
+
+#### 5. Utilizar la función split() para una imagen RGB y separar en canales.
+
+Al utilizar la función **split()** debemos tener en cuenta que la imágen deber ser cargada utilizando **imread()** o en otro caso utilizar **cvtColor()** para asegurarnos que la imágen se encuentra en formáto BGR ya que **split()** separa los canales siguiendo este formáto.
+
+#### 6. (*) La conversión de una imagen de color a escala de grises se puede hacer de varias formas. El ejercicio consiste en convertir la imagen de Lenna color a escala de grises utilizando diferentes métodos.
+
+##### (a) Usando la libreria cv2 y el método cvtColor()
+
+![cvtColor()](./reporte_imagenes/tp1-6.png)
+
+##### (b) Usando la fórmula de luminancia
+
+La fórmula de luminancia está dada por: $0.299 \cdot r + 0.587 \cdot g + 0.114 \cdot b$
+
+En donde r,g y b corresponden a los canales de color.
+
+![Luminancia](./reporte_imagenes/tp1-7.png)
+
+##### (c) Usando scickit-image y el método rgb2gray()
+
+![scickit](./reporte_imagenes/tp1-8.png)
+
+##### (d) ¿Qué pasa con los canales?
+
+Se pierde la información cromática ya que pasamos de tener 3 canales (RGB) a un único canal (escala de grises).
+
+Shape original (RGB): (250, 250, 3)
+Shape gray cvt: (250, 250)
+Shape gray luminance: (250, 250)
+Shape gray scickit: (250, 250)
+
+##### (e) ¿Qué profundidad de bits tiene la imagen?
+
+La imagen en escala de grises tiene menor profundidad total por píxel, ya que tiene un único canal de 8 bits, mientras que la imagen a color tiene tres canales de 8 bits cada uno, sumando un total de 24 bits por píxel.
+
+Shape original (RGB): (250, 250, 3)
+Shape gray: (250, 250)
+
+##### (f) Evaluar con otra imagen de mayor profundidad
+
+La siguiente imágen cuenta con una profunidad de 16 bits y fue creada utilizand openCV y numpay.
+
+![16 bits](./reporte_imagenes/tp1-9.png)
+
+##### (g) ¿Qué sucede con la imagen? ¿Ha cambiado algo?
+
+Aunque la imagen fue creada con una profundidad de 16 bits por canal, visualmente no se aprecian diferencias con respecto a una imagen de 8 bits. Esto se debe a que la mayoría de los monitores y visores de imágenes estándar están diseñados para mostrar imágenes en formato de 8 bits por canal, lo cual limita la cantidad de niveles de intensidad que pueden representarse visualmente. Como resultado, al visualizar una imagen de 16 bits en estos dispositivos, los valores se escalan o truncados automáticamente para ajustarse al rango visible (0–255), descartando parte de la información adicional.
+
+#### 7. (*) Convertir la imagen de Lenna a otros modos de color, como CMYK, HSV, HSL. Mostrar el
+resultado.
+
+Para cada modelo de color (CMYK, HSV, HSL), se mostrarán los canales por separado, ya que si simplemente se visualizara la imagen convertida directamente, esta seguiría viéndose en el formato RGB. Esto ocurre porque las pantallas y visores de imágenes están diseñados para interpretar y representar los valores de color en el espacio RGB. Por lo tanto, para observar cómo se distribuye la información en cada componente del modelo de color (por ejemplo, Cian, Magenta, Amarillo y Negro en CMYK), es necesario visualizar cada canal como una imagen en escala de grises, donde la intensidad refleja el valor del canal correspondiente.
+
+##### HSV
+
+![HSV](./reporte_imagenes/tp1-10.png)
+
+##### HSL
+
+![HLS](./reporte_imagenes/tp1-11.png)
+
+##### CMYK
+
+![CMYK](./reporte_imagenes/tp1-12.png)
+
+#### 8. (*) Tomar la imagen convertida en escala de grises y volver a convertir al en modo RGB. ¿Qué ha sucedido?
+
+Al convertir una imagen en escala de grises nuevamente al modo RGB, no se recupera el color original. Esto se debe a que durante la conversión a escala de grises se pierde la información cromática: el color se reduce a una sola intensidad por píxel, que representa la luminosidad promedio de los canales rojo, verde y azul. Al reconvertir esa imagen gris a RGB, simplemente se replica ese mismo valor de intensidad en los tres canales, resultando en una imagen en tonos de gris pero codificada como RGB. Es decir, cada píxel ahora tiene valores R=G=B, lo cual visualmente sigue siendo una imagen en escala de grises, pero con el formato estructural de una imagen a color.
+
+#### 9. Cargar una imagen en color con OpenCV. Extrae los valores de un píxel en la posición (x, y). Modifica un  ́area de la imagen (por ejemplo, convierte una región a rojo puro). Divide la imagen en sus tres canales de color (B, G, R) y muestra cada uno por separado.
+
+![alt text](./reporte_imagenes/tp1-13.png)
+
+
 
 ### Parte 2: Compresión de imágenes
 #### 1. ¿El formato BMP es un formato de compresion?
