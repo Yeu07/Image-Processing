@@ -3,7 +3,7 @@
 
 ### Integrantes
 - **Andrés Maglione** - **13753**
-- **Yeumen Silva** - **Legajo**
+- **Yeumen Silva** - **13693**
 
 ### Introducción
 El presente trabajo práctico corresponde a la unidad 1 de la materia Procesamiento de Imágenes. En el mismo, se desarrollan los ejercicios correspondientes al trabajo práctico utilizando Python y librerías como OpenCV, PIL y NumPy. 
