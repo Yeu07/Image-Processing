@@ -16,7 +16,7 @@ Este documento contiene una breve descripción de los ejercicios realizados y re
 
 #### 6. (*) La conversión de una imagen de color a escala de grises se puede hacer de varias formas. El ejercicio consiste en convertir la imagen de Lenna color a escala de grises utilizando diferentes métodos.
 
-Consultar el ejericicio 6 de la parte 1 del notebook [`TP1.ipynb`](TP1.ipynb) para ver el código.
+Consultar el ejericicio 6 de la parte 1 del notebook [`TP1.pdf`](TP1.pdf) para ver el código.
 
 ##### (a) Usando la libreria cv2 y el método cvtColor()
 
@@ -65,7 +65,7 @@ resultado.
 
 Para cada modelo de color (CMYK, HSV, HSL), se mostrarán los canales por separado, ya que si simplemente se visualizara la imagen convertida directamente, esta seguiría viéndose en el formato RGB. Esto ocurre porque las pantallas y visores de imágenes están diseñados para interpretar y representar los valores de color en el espacio RGB. Por lo tanto, para observar cómo se distribuye la información en cada componente del modelo de color (por ejemplo, Cian, Magenta, Amarillo y Negro en CMYK), es necesario visualizar cada canal como una imagen en escala de grises, donde la intensidad refleja el valor del canal correspondiente.
 
-Consultar el ejericicio 7 de la parte 1 del notebook [`TP1.ipynb`](TP1.ipynb) para ver el código.
+Consultar el ejericicio 7 de la parte 1 del pdf [`TP1.pdf`](TP1.pdf) para ver el código.
 
 ##### HSV
 
@@ -85,7 +85,7 @@ Al convertir una imagen en escala de grises nuevamente al modo RGB, no se recupe
 
 ![cvtColor()](./reporte_imagenes/tp1-6.png)
 
-Consultar el ejericicio 8 de la parte 1 del notebook [`TP1.ipynb`](TP1.ipynb) para ver el código.
+Consultar el ejericicio 8 de la parte 1 del pdf [`TP1.pdf`](TP1.pdf) para ver el código.
 
 
 ### Parte 2: Compresión de imágenes

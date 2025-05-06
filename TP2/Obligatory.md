@@ -163,7 +163,7 @@ En la imagen de la izquierda, correspondiente a la multiplicación de las imáge
 
 En la imagen de la derecha, correspondiente a la división, el resultado invierte la intensidad en muchas regiones: los contornos del dragón aparecen brillantes sobre un fondo negro, especialmente en las zonas donde la imagen del león tiene valores oscuros y actúa como divisor. Esta operación crea un efecto de realce, haciendo visibles detalles que estaban menos marcados en las imágenes originales. El fondo completamente negro indica zonas donde el denominador (imagen del león) tenía valores altos, lo que reduce el resultado final a valores bajos, intensificando el contraste.
 
-Consultar el ejericicio 3 de la parte 2 del notebook [`TP2.ipynb`](TP2.ipynb) para ver el código.
+Consultar el ejericicio 3 de la parte 2 del pdf [`TP2.pdf`](TP2.pdf) para ver el código.
 
 
 #### 5. (*) Combinación con operadores lógicos: Usa operadores booleanos (cv2.bitwise and, cv2.bitwise or, cv2.bitwise xor) para fusionar imágenes basándose en una máscara binaria. Describir que sucede en cada caso.
@@ -178,7 +178,7 @@ A continuación podemos observar las dos imágenes utilizadas y luego, las opera
 
 - **xor** Destaca píxeles donde solo una de las imágenes tiene valores no nulos (exclusividad). Si un píxel difiere entre las dos imágenes (una es blanca y la otra negra), XOR lo mostrará como blanco; si son iguales, será negro.
 
-Consultar el ejericicio 5 de la parte 2 del notebook [`TP2.ipynb`](TP2.ipynb) para ver el código.
+Consultar el ejericicio 5 de la parte 2 del pdf [`TP2.pdf`](TP2.pdf) para ver el código.
 
 #### 8. (*) Uso de operadores lógicos para reemplazar partes de una imagen: Reemplazar un área especı́fica de una imagen con otra utilizando operadores lógicos y relacionales para definir la región de interés (ROI).
 
@@ -188,7 +188,7 @@ El resultado fue el siguiente:
 
 ![ROI](./reporte_imagenes/tp2-9.png)
 
-Consultar el ejericicio 8 de la parte 2 del notebook [`TP2.ipynb`](TP2.ipynb) para ver el código.
+Consultar el ejericicio 8 de la parte 2 del pdf [`TP2.pdf`](TP2.pdf) para ver el código.
 
 
 ### Parte 3: Dominio Espacial
@@ -209,7 +209,7 @@ Obteniendo como resultado la siguiente imágen:
 
 Aplicar un filtro gaussiano antes del operador de Sobel permite reducir el ruido presente en la imagen. En la comparación, se observa que el resultado de aplicar Sobel directamente sobre la imagen original presenta bordes más marcados, pero también puede acentuar el ruido. En cambio, al aplicar primero el suavizado gaussiano, los bordes se ven ligeramente más suaves pero más limpios y definidos, mostrando únicamente las estructuras más relevantes de la imagen.
 
-Consultar el ejericicio 8 de la parte 3 del notebook [`TP2.ipynb`](TP2.ipynb) para ver el código.
+Consultar el ejericicio 8 de la parte 3 del pdf [`TP2.pdf`](TP2.pdf) para ver el código.
 
 #### 12. (*) Comparación de Métodos de Detección de Bordes : Comparar Sobel, Prewitt, Laplace y Canny trabajando diversas imágenes con caracterı́sticas diferentes.
 
@@ -262,7 +262,7 @@ En la imagen con mucho ruido, Laplace responde excesivamente al ruido, generando
 
 En la imágen con texturas complejas como fórmulas matemáticas, todos los métodos detectan contornos, pero Sobel y Prwitt logran un mejor equilibrio entre detalle y claridad. Canny, especialmente, sobresale por separar con precisión las estructuras relevantes del fondo. 
 
-Consultar el ejericicio 12 de la parte 3 del notebook [`TP2.ipynb`](TP2.ipynb) para ver el código.
+Consultar el ejericicio 12 de la parte 3 del pdf [`TP2.pdf`](TP2.pdf) para ver el código.
 
 #### 13. (*) Realce de Detalles: Aplicar un filtro de paso alto y sumarlo a la imagen original para mejorar los detalles.
 
@@ -284,7 +284,7 @@ Al sumar la imagen original con su versión de paso alto, se realzan los bordes 
   - Esto genera una imagen más nítida, con mayor contraste local, lo que mejora la percepción visual y la definición general.  
   - El rostro, el sombrero y la pluma presentan líneas más marcadas y definidas, lo que contribuye a una apariencia más clara y atractiva.
 
-Consultar el ejericicio 13 de la parte 3 del notebook [`TP2.ipynb`](TP2.ipynb) para ver el código.
+Consultar el ejericicio 13 de la parte 3 del pdf [`TP2.pdf`](TP2.pdf) para ver el código.
 
 #### 15. (*) Filtro de Diferencia Gaussiana (DoG): Aplicar la técnica de Diferencia de Gaussiana para resaltar bordes.
 
@@ -302,4 +302,4 @@ Resultado de restar la imagen suavizada con σ = 3.0 de la suavizada con σ = 1.
   - El DoG actúa como un detector de bordes al resaltar las regiones donde hay cambios bruscos de intensidad.  
   - Las texturas y contornos se hacen claramente visibles, mientras que las zonas homogéneas permanecen oscuras.  
 
-Consultar el ejericicio 15 de la parte 3 del notebook [`TP2.ipynb`](TP2.ipynb) para ver el código.
+Consultar el ejericicio 15 de la parte 3 del pdf [`TP2.pdf`](TP2.pdf) para ver el código.
