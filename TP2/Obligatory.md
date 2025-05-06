@@ -13,6 +13,42 @@ El objetivo principal es profundizar en el análisis y manipulación de imágene
 Este documento presenta una breve descripción de los ejercicios realizados y las respuestas a las preguntas teóricas incluidas en el trabajo práctico. Para consultar el desarrollo completo y los resultados obtenidos, se puede acceder al notebook con el código fuente (`TP2.ipynb`) o al PDF generado a partir del mismo (`TP2.pdf`).
 
 ### Parte 1: Histogramas
+
+#### 7. (*) Transformar la distribución de intensidades de una imagen para que se parezca a la de otra. Implementar el ajuste de histograma usando OpenCV o skimage.exposure.match histograms(). Comparar los histogramas antes y después del ajuste.
+
+Enlace al código: [`TP2.ipynb`](TP2.ipynb#1-7)
+
+![alt text](./reporte_imagenes/tp2-28.png)
+![alt text](./reporte_imagenes/tp2-29.png)
+Visualmente, se puede apreciar que el contraste de la imagen es mayor que el de la imagen original. Esto se debe a que la ecualización de histograma redistribuye los valores de intensidad de la imagen original para que estén más uniformemente distribuidos en el rango de intensidades posibles.
+
+Por otro lado, la imagen pierde visiblemente suavidad: se nota las diferencias abruptas de intensidad en los píxeles, lo que puede ser un efecto no deseado en algunas aplicaciones. 
+
+
+#### 8. (*) Aplicar ecualización de histograma a una imagen en escala de grises. Comparar la imagen original con la ecualizada
+
+Enlace al código: [`TP2.ipynb`](TP2.ipynb#1-8)
+
+![alt text](./reporte_imagenes/tp2-30.png)
+![alt text](./reporte_imagenes/tp2-31.png)
+
+#### 9. (*) Implementar una umbralización manual eligiendo un valor de umbral. Usar el método de Otsu para calcular un umbral óptimo automáticamente.
+
+Enlace al código: [`TP2.ipynb`](TP2.ipynb#1-9)
+
+![alt text](./reporte_imagenes/tp2-32.png)
+![alt text](./reporte_imagenes/tp2-33.png)
+
+#### 11. (*) Implementar la transformación gamma I’=Iy, permitiendo ajustar el valor de y dinámicamente. Aplicar diferentes valores de y en distintas regiones de la imagen (por ejemplo, usando una máscara o adaptando y en funci´on del brillo local). Visualizar el efecto de la corrección gamma en la imagen y en su histograma
+
+Enlace al código: [`TP2.ipynb`](TP2.ipynb#1-11)
+![alt text](./reporte_imagenes/tp2-34.png)
+![alt text](./reporte_imagenes/tp2-35.png)
+![alt text](./reporte_imagenes/tp2-37.png)
+![alt text](./reporte_imagenes/tp2-36.png)
+![alt text](./reporte_imagenes/tp2-38.png)
+
+
 ### Parte 2: Combinación de Imágenes
 
 Las imágenes con las cuales se va a trabajar en los incisos 1,2 y 3 son RGB y tienen las siguintes características:
