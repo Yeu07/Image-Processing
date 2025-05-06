@@ -52,8 +52,8 @@ plt.axis('off')
 
 #4. apertura - clausura
 plt.subplot(1, 4, 4)
-plt.imshow(cv2.subtract(opening,closing), cmap='gray')
-plt.title('Apertura - Clausura')
+plt.imshow(cv2.subtract(closing,opening), cmap='gray')
+plt.title('Clausura - Apertura')
 plt.axis('off')
 plt.suptitle('Apertura y Clausura')
 
@@ -92,7 +92,7 @@ external_gradient = cv2.subtract(dilation,image)
 ```
 
 #### 7. (*) Segmentación básica con umbral + morfología: Aplicar umbral, luego apertura y cierre para mejorar el resultado. Ideal como paso previo a una segmentación más elaborada
-![img3](image.png)
+![img3](reporte_imagenes/tp3-3.png)
 
 Fragmento de código:
 ```python
