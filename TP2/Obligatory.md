@@ -1,5 +1,5 @@
 # Procesamiento de Imágenes - 2025
-## TP1
+## TP2
 
 ### Integrantes
 - **Andrés Maglione** - **13753**
@@ -16,38 +16,131 @@ Este documento presenta una breve descripción de los ejercicios realizados y la
 
 #### 7. (*) Transformar la distribución de intensidades de una imagen para que se parezca a la de otra. Implementar el ajuste de histograma usando OpenCV o skimage.exposure.match histograms(). Comparar los histogramas antes y después del ajuste.
 
-Enlace al código: [`TP2.ipynb`](TP2.ipynb#1-7)
+![img1](./reporte_imagenes/tp2-28.png)
+![img2](./reporte_imagenes/tp2-29.png)
 
-![alt text](./reporte_imagenes/tp2-28.png)
-![alt text](./reporte_imagenes/tp2-29.png)
-Visualmente, se puede apreciar que el contraste de la imagen es mayor que el de la imagen original. Esto se debe a que la ecualización de histograma redistribuye los valores de intensidad de la imagen original para que estén más uniformemente distribuidos en el rango de intensidades posibles.
+---
+Fragmento del código
+```python
+img_light = cv2.imread(image_paths[0])
+img_dark = cv2.imread(image_paths[1])
+img_light_rgb = cv2.cvtColor(img_light, cv2.COLOR_BGR2RGB)
+img_dark_rgb = cv2.cvtColor(img_dark, cv2.COLOR_BGR2RGB)
 
-Por otro lado, la imagen pierde visiblemente suavidad: se nota las diferencias abruptas de intensidad en los píxeles, lo que puede ser un efecto no deseado en algunas aplicaciones. 
+img_matched = match_histograms(img_dark_rgb, img_light_rgb, channel_axis=-1).astype(np.uint8)
+images = [img_light_rgb, img_matched]
+
+for i, img_rgb in enumerate(images):
+    # Calcular histogramas RGB
+    hist_r = cv2.calcHist([cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)], [2], None, [256], [0, 256]).flatten()
+    hist_g = cv2.calcHist([cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)], [1], None, [256], [0, 256]).flatten()
+    hist_b = cv2.calcHist([cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)], [0], None, [256], [0, 256]).flatten()
+    
+    histograms.append([hist_r, hist_g, hist_b])
+
+    # Mostrar imagen
+```
 
 
 #### 8. (*) Aplicar ecualización de histograma a una imagen en escala de grises. Comparar la imagen original con la ecualizada
 
-Enlace al código: [`TP2.ipynb`](TP2.ipynb#1-8)
+![img1](./reporte_imagenes/tp2-30.png)
+![img2](./reporte_imagenes/tp2-31.png)
+Visualmente, se puede apreciar que el contraste de la imagen es mayor que el de la imagen original. Esto se debe a que la ecualización de histograma redistribuye los valores de intensidad de la imagen original para que estén más uniformemente distribuidos en el rango de intensidades posibles.
 
-![alt text](./reporte_imagenes/tp2-30.png)
-![alt text](./reporte_imagenes/tp2-31.png)
+Por otro lado, la imagen pierde visiblemente suavidad: se nota las diferencias abruptas de intensidad en los píxeles, lo que puede ser un efecto no deseado en algunas aplicaciones. 
+
+---
+Fragmento del código
+```python
+image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+hist = cv2.calcHist([image], [0], None, [256], [0, 256])
+
+image_eq = cv2.equalizeHist(image)
+hist_eq = cv2.calcHist([image_eq], [0], None, [256], [0, 256])
+
+### Mostrar Comparacion usando matplotlib
+```
 
 #### 9. (*) Implementar una umbralización manual eligiendo un valor de umbral. Usar el método de Otsu para calcular un umbral óptimo automáticamente.
 
-Enlace al código: [`TP2.ipynb`](TP2.ipynb#1-9)
+![img1](./reporte_imagenes/tp2-32.png)
+![img2](./reporte_imagenes/tp2-33.png)
 
-![alt text](./reporte_imagenes/tp2-32.png)
-![alt text](./reporte_imagenes/tp2-33.png)
+---
+Fragmento del código
+```python
+image_path = './part1/8/dog.jpg'
+image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+
+# Definir umbral
+threshold = 125
+
+# Aplicar umbral
+_, manual_threshold = cv2.threshold(image, threshold, 255, cv2.THRESH_BINARY)
+
+# Usar el algoritmo de Otsu
+_, otsu_threshold = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+### Mostrar resultado
+```
 
 #### 11. (*) Implementar la transformación gamma I’=Iy, permitiendo ajustar el valor de y dinámicamente. Aplicar diferentes valores de y en distintas regiones de la imagen (por ejemplo, usando una máscara o adaptando y en funci´on del brillo local). Visualizar el efecto de la corrección gamma en la imagen y en su histograma
 
-Enlace al código: [`TP2.ipynb`](TP2.ipynb#1-11)
-![alt text](./reporte_imagenes/tp2-34.png)
-![alt text](./reporte_imagenes/tp2-35.png)
-![alt text](./reporte_imagenes/tp2-37.png)
-![alt text](./reporte_imagenes/tp2-36.png)
-![alt text](./reporte_imagenes/tp2-38.png)
+![img1](./reporte_imagenes/tp2-34.png)
+![img2](./reporte_imagenes/tp2-35.png)
+![img3](./reporte_imagenes/tp2-37.png)
+![img4](./reporte_imagenes/tp2-36.png)
+![img5](./reporte_imagenes/tp2-38.png)
 
+---
+Fragmento del código
+```python
+def gamma_correction(image, gamma):
+    image_normalized = image / 255.0
+    # Aplicar la corrección gamma
+    image_corrected = np.power(image_normalized, gamma)
+    
+    # Normalizar la imagen corregida
+    image_corrected = np.clip(image_corrected * 255, 0, 255).astype(np.uint8)
+    return image_corrected
+
+
+# 1. Aplicar una gamma a toda la imagen
+gamma = 2
+image_gamma = gamma_correction(image, gamma)
+plot_image_and_histogram(image_gamma, f'Corrección gamma: {gamma}')
+
+# 2. Aplicar gammas distintos a las regiones claras y oscuras
+gamma_light = 1.2
+gamma_dark = 0.8
+
+corrected = image.copy()
+corrected[image > 127] = gamma_correction(image[image > 127], gamma_light)
+corrected[image <= 127] = gamma_correction(image[image <= 127], gamma_dark)
+
+plot_image_and_histogram(corrected, 'Corrección gamma usando máscara')
+
+# 3. Usar una máscara para aplicar la corrección gamma
+image_copy = image.copy()
+_, mask = cv2.threshold(image_copy, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+
+# Show the mask
+plt.figure(figsize=(14, 6))
+plt.title('Máscara')
+plt.imshow(mask, cmap='gray')
+plt.axis('off')
+plt.show()
+
+# Aplicar la corrección gamma a la imagen original usando la máscara
+image_gamma_masked = image.copy()
+image_gamma_masked[mask == 255] = gamma_correction(image[mask == 255], gamma_light)
+image_gamma_masked[mask == 0] = gamma_correction(image[mask == 0], gamma_dark)
+plot_image_and_histogram(image_gamma_masked, f'Corrección gamma: {gamma_light} (claro), {gamma_dark} (oscuro) con máscara')
+```
+
+
+--- 
 
 ### Parte 2: Combinación de Imágenes
 
