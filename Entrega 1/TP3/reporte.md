@@ -17,6 +17,9 @@ Este documento presenta una descripción general de los ejercicios desarrollados
 #### 4. (*) Apertura y clausura morfológica: Aplicar apertura y clausura para eliminar ruido o cerrar huecos. Comparar la imagen original y la resultante de aplicar el operador. Comentar los efectos visuales. Comparar con los resultados anteriores. Mostrar 4 subplots: original, apertura, cierre, diferencia entre ambos.
 ![img1](./reporte_imagenes/tp3-1.png)
 
+Los efectos resultados fueron los siguientes:
+La apertura elimina el ruido de fondo, eliminando casi todos los puntos pero sin rellenar los huecos. La clausura, por otro lado, rellena los huecos y elimina el ruido de fondo, pero no afecta a los objetos grandes. Al mostrar la diferencia (Clausura - Apertura) se puede ver una imagen que contiene casi únicamente el ruido de fondo y una pequeña silueta de las letras, ya que la apertura elimina el ruido de fondo y la clausura lo rellena. 
+Ya que la imagen original no tenía grandes secciones sin conectar, la diferencia inversa (Apertura - Clausura) no muestra nada significativo y por eso no se muestra.
 --- 
 Fragmento de código:
 ```python
