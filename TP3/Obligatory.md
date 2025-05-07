@@ -6,11 +6,11 @@
 - **Yeumen Silva** - **13693**
 
 ### Introducción
-El presente trabajo práctico corresponde a la unidad 2 de la materia Procesamiento de Imágenes. En esta ocasión, se abordan temas relacionados con histogramas, combinación de imágenes y técnicas aplicadas en el dominio espacial, utilizando Python junto con librerías como OpenCV, NumPy y Matplotlib.
+El presente trabajo práctico corresponde a la unidad 3 de la materia Procesamiento de Imágenes. En esta ocasión, se abordan conceptos fundamentales relacionados con los operadores morfológicos, aplicados a imágenes binarias y de bordes. Para ello, se emplea el lenguaje de programación Python, utilizando librerías como OpenCV, NumPy y Matplotlib.
 
-El objetivo principal es profundizar en el análisis y manipulación de imágenes digitales a través del uso de histogramas, la fusión de diferentes imágenes y la aplicación de filtros espaciales, fortaleciendo así la comprensión de estos conceptos fundamentales del procesamiento de imágenes.
+El objetivo principal es comprender y analizar el impacto de las distintas operaciones morfológicas como erosión, dilatación, apertura, clausura, gradiente morfológico y técnicas combinadas con umbralización sobre imágenes digitales. Estas técnicas permiten modificar la estructura de los objetos presentes en una imagen, siendo especialmente útiles en tareas de mejora visual, relleno de objetos, eliminación de ruido y detección de bordes.
 
-Este documento presenta una breve descripción de los ejercicios realizados y las respuestas a las preguntas teóricas incluidas en el trabajo práctico. Para consultar el desarrollo completo y los resultados obtenidos, se puede acceder al notebook con el código fuente (`TP3.ipynb`) o al PDF generado a partir del mismo (`TP3.pdf`).
+Este documento presenta una descripción general de los ejercicios desarrollados y las respuestas a las preguntas teóricas planteadas en el trabajo. Para consultar el código fuente y los resultados completos, se puede acceder al notebook (`TP3.ipynb`) o al PDF generado (`TP3.pdf`).
 
 ### Ejercicios
 
