@@ -144,7 +144,7 @@ plot_image_and_histogram(image_gamma_masked, f'Corrección gamma: {gamma_light} 
 
 ### Parte 2: Combinación de Imágenes
 
-Las imágenes con las cuales se va a trabajar en los incisos 1,2 y 3 son RGB y tienen las siguintes características:
+Las imágenes con las cuales se va a trabajar en el inciso 3 tienen las siguintes características:
 
 | Resolución     | Profundidad de color | Tamaño     |
 |----------------|----------------------|------------|
