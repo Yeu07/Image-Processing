@@ -1,0 +1,8 @@
+opencv-python
+matplotlib
+numpy
+scikit-image
+Pillow
+ipykernel
+jupyter
+tensorflow
