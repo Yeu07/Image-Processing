@@ -12,21 +12,51 @@ El objetivo principal es comprender y analizar cómo las distintas representacio
 
 Este documento presenta una descripción general de los ejercicios desarrollados y las respuestas a las preguntas teóricas planteadas en el trabajo. Para consultar el código fuente y los resultados completos, se puede acceder al notebook (`TP4.ipynb`) o al PDF generado (`TP4.pdf`).
 
+Los siguiente ejercicios se llevarán acabo principalmente con dos imágenes, una con predominancia de frecuencias bajas y otra con predominancia de frecuencias altas. Esto permitirá observar las diferencias en el espectro de magnitud y fase, así como los efectos de los filtros aplicados.
+
+![base](./imagenes_reporte/8.png)
+
 ### Ejercicios
 
 #### 10. (*) Responder las siguientes preguntas. Tratar de utilizar dos imágenes en aquellos ejercicios que no soliciten algo particular. Utilizar una imagen que muestre frecuencias bajas en su mayorı́a y otras con mayorı́a de frecuencias altas. Por cada pregunta se ha agregado una sugerencia de como realizar el ejercicio practico para acompañar su respuesta.
 
 
+
 ##### (a) ¿Cómo se visualiza la diferencia entre las frecuencias altas y bajas en una imagen? Ejercicio sug- erido: Aplicar la Transformada de Fourier (DFT) y mostrar la magnitud del espectro centrado con fftshift.
 
+Al aplicar la DFT a una imagen y visualizar la magnitud del espectro, podemos observar que la mayoría de la energía de la imagen se concentra en el centro del espectro. Esto se debe a que las frecuencias bajas (que corresponden a las áreas homogéneas de la imagen) están cerca del origen. 
+En este ejemplo en particular, la imagen de la izquierda tiene un espectro con gran presencia de frecuencias altas, mientras que la imagen de la derecha tiene un espectro con predominancia de frecuencias bajas, por lo que se puede observar que la mayoría de la energía está concentrada en el centro del espectro.
+
+![imagen](./imagenes_reporte/9.png)
 
 ##### (b) ¿Qué ocurre si eliminamos las componentes de alta frecuencia de una imagen? ¿Y si eliminamos las de baja frecuencia? Ejercicio sugerido: Aplicar filtros pasa bajos y pasa altos en el dominio de la frecuencia y reconstruir la imagen con la transformada inversa.
+Si eliminamos las componentes de alta frecuencia, la imagen resultante se verá más suave y con menos detalles, ya que las frecuencias altas son responsables de los bordes y los detalles. Por otro lado, si eliminamos las componentes de baja frecuencia, se pierde la información de fondo o estructura general de la imagen, por lo que el resultado se asemeja a un mapa de bordes, en el que solo las transiciones abruptas son visibles.
+
+![Imagen](./imagenes_reporte/10.png)
+![Imagen](./imagenes_reporte/11.png)
 
 ##### (c) ¿Qué representa la fase de la transformada de Fourier de una imagen? ¿Qué ocurre si se conserva solo la fase o solo la magnitud? Ejercicio sugerido: Reconstruir una imagen usando solo la magnitud y fase de otra imagen, intercambiar fase y magnitud entre dos imágenes distintas.
 
+La  fase de una frecuencia en particular nos dice dónde están ubicadas espacialmente las características que generan esa frecuencia (es decir, codifica la información de la posición de los detalles en la imagen). Si intercambiamos la fase y la magnitud entre dos imágenes, obtendremos una imagen que tiene la estructura de una imagen (la fase) pero con la textura de otra (la magnitud). Esto provoca que la imagen resultante sea mucho más parecida a la imagen de la que se tomó la fase, como se verá en el siguiente ejemplo.
+
+![Imagen](./imagenes_reporte/12.png)
+
 ##### (d) ¿Por qué se centra la transformada de Fourier para su visualización? ¿Qué efecto tiene? Ejercicio sugerido: Mostrar el espectro de magnitud con y sin aplicar fftshift.
 
+La transformada de Fourier se centra para su visualización principalmente por razones de conveniencia. Al centrar la transformada, las frecuencias bajas quedan en el centro y las altas en la periferia, lo que se alinea con nuestra intuición sobre mayor distancia al centro = mayor magnitud.
+Además, al realizar esta operación se hacen evidentes las simetrías que pueden existir en el espectro, y se facilita la aplicación de operaciones como los filtros de frecuencia.
+
+![Imagen](./imagenes_reporte/13.png)
+
 ##### (e) ¿Cómo se comporta la transformada de Fourier ante la traslación o rotación de una imagen? Ejercicio sugerido: Aplicar una traslación o rotación y comparar los espectros de magnitud y fase antes y después.
+
+Una traslación de la imagen provoca un desfase lineal en el espectro de fase, mientras que la magnitud permanece inalterada. Intuitivamente, esto se debe a que la "forma" de los objetos presentes en la imagen (codificada por la magnitud) no cambia, pero su posición (codificada por la fase) sí.
+
+Una rotación en el dominio espacial provoca una rotación idéntica en el espectro de Fourier, tanto en la magnitud como en la fase. Esto se debe a que la rotación de la imagen afecta a todas las frecuencias de manera uniforme, lo que provoca que el espectro también rote.
+
+![Imagen](./imagenes_reporte/14.png)
+![Imagen](./imagenes_reporte/15.png)
+![Imagen](./imagenes_reporte/16.png)
 
 ##### (f) ¿Cómo se refleja una estructura periódica en el dominio frecuencial? Ejercicio sugerido: Usar imágenes sintéticas (rejillas, lı́neas) y observar cómo se representan sus frecuencias dominantes.
 

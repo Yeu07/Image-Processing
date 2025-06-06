@@ -83,7 +83,7 @@ for i, prop in enumerate(props, 1):
     region_gray = region_gray * region_mask  # aplicar la máscara
 
 
-    # GLCM con distancia 1 y ángulo 0°
+    # GLCM con distancia 1 angulo horizontal
     glcm = graycomatrix(region_gray, distances=[1], angles=[0], levels=256, symmetric=True, normed=True)
 
     contrast = graycoprops(glcm, 'contrast')[0, 0]
